@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Mario (Modulaire Game Engine)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+            height: 100%;
+        }
+
+        body {
+            background-color: #1a202c;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+            box-sizing: border-box;
+        }
+
+        .game-container {
+            border: 4px solid #4a5568;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+            max-width: 90vw;
+        }
+
+        canvas {
+            display: block;
+            width: 768px;
+            height: 720px;
+            background-color: #63b3ed;
+            image-rendering: pixelated;
+        }
+
+        .info {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 0.75rem 1.25rem;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            margin-top: 1rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white font-inter">
+
+    <div class="game-container">
+        <canvas id="gameCanvas"></canvas>
+    </div>
+
+    <div class="info">
+        <h3 class="font-bold">Bediening (De "Rode Speler")</h3>
+        <p><strong>Pijltjes:</strong> Bewegen | <strong>X:</strong> Springen (Jump) | <strong>Z:</strong> Rennen (Run)</p>
+        <p class="mt-2 text-xs text-gray-400">Deze versie gebruikt modulaire JS-bestanden.</p>
+    </div>
+
+    <!-- HET LADEN VAN DE MODULAIRE JS-BESTANDEN IS CRUCIAAL -->
+    <!-- 1. Input moet als eerste geladen worden -->
+    <script src="input.js"></script>
+    <!-- 2. De basisklassen en Mario-namespace -->
+    <script src="mario_entities.js"></script>
+    <!-- 3. De levelbouwers, die de klassen uit entities nodig hebben -->
+    <script src="mario_level.js"></script>
+    <!-- 4. De hoofd game loop, die alle voorgaande functies gebruikt -->
+    <script src="main_game.js"></script>
+
+</body>
+</html>
+
